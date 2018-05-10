@@ -1,7 +1,7 @@
 const { get } = require('axios');
 const express = require('express');
-const bodyParser = require('body-parser')
-const User = require('./bd')
+const bodyParser = require('body-parser');
+const User = require('./bd');
 
 const PORT = 4321;
 const app = express();
