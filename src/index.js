@@ -6,8 +6,8 @@ const PORT = 4321;
 const URL = 'https://kodaktor.ru/j/users';
 const app = express();
 app
- .get(/hello), r => r.res.end('Hello world!'))
- .get(/users/,async r => {
+ .get(/hello/, r => r.res.end('Hello world!'))
+ .get(/users/, async r => {
    const { data: { users: item } } = await get(URL);
    r.res.render('list', { title: 'Список логинов', items });
 })
