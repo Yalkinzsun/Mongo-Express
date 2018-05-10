@@ -8,7 +8,7 @@ const app = express();
 app
  .get(/hello/, r => r.res.end('Hello world!'))
  .get(/users/, async r => {
-   const { data: { users: item } } = await get(URL);
+   const { data: { users: items } } = await get(URL);
    r.res.render('list', { title: 'Список логинов', items });
 })
  .use(r => r.res.status(404).end('Still not here, sorry!'))
