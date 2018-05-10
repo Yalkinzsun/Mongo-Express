@@ -11,7 +11,7 @@ app
    const { data: { users: item } } = await get(URL);
    r.res.render('list', { title: 'Список логинов', items });
 })
- .use(r => r.res.status(404).end('Still not here, sorry!))
+ .use(r => r.res.status(404).end('Still not here, sorry!'))
  .use((e,r,res,n) => res.status(500).end(`Error: ${e}`))
  .set('view engine', 'pug')
  .listen(process.env.PORT || PORT, () => console.log(process.pid));
