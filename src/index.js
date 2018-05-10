@@ -7,10 +7,24 @@ const URL = 'https://kodaktor.ru/j/users';
 const app = express();
 app
  .get(/hello/, r => r.res.end('Hello world!'))
- .get(/users/, async r => {
+/* .get(/users/, async r => {
    const { data: { users: items } } = await get(URL);
-   r.res.render('list', { title: 'Список логинов', items });
+   r.res.render('list', { title: 'Список логинов', items }); */
+
+ .use(/users/, require('./routes/users')(express))
+
+ .get('/aprilusers', async r => {
+    const  items = await User.find();
+    r.res.render('list', { title: 'Список логинов из БД', items });
+
 })
+
+.get('/aprilusers/:login', async r => {
+   const  item = await User.findOne({"login": r.params.login});
+    r.res.send('<h3>Password of ' + r.params.login + ' is:</h3>' + item.password);
+})
+
+ .get('/', r => r.res.send('HOME'))
  .use(r => r.res.status(404).end('Still not here, sorry!'))
  .use((e,r,res,n) => res.status(500).end(`Error: ${e}`))
  .set('view engine', 'pug')
