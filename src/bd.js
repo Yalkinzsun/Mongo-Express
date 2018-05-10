@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
 },
 'password': {
   'type': 'String'
-}
+},
 }, { 'collection': 'studentrecords' });
 
 UserSchema.pre('save', n => console.log('saved') || n());
