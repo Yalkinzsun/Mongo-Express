@@ -22,7 +22,7 @@ app
 
 .get('/aprilusers/:login', async r => {
    const  item = await User.findOne({"login": r.params.login});
-    r.res.send('Пароль пользователя <b>' + r.params.login + '</b>:' + '<mark>' + item.password + '</mark>');
+    r.res.send('Пароль пользователя <b>' + r.params.login + '</b>: ' + '<mark>' + item.password + '</mark>');
 })
 
  .get('/', r => r.res.send('Добро пожаловать!'))
